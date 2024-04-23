@@ -6,7 +6,7 @@ import cv2
 
 
 if __name__=="__main__":
-    modul=YOLO("E:\\TranfficSign\\ultralytics-main\\runs\\detect\\train16\\weights\\best.pt")
+    modul=YOLO("E:\\TranfficSign\\ultralytics-main\\runs\\detect\\train36\\weights\\best.pt")
 
     # 图片文件夹路径
     image_folder = "E:\\TranfficSign\\ultralytics-main\\ultralytics\\cfg\\datasets\\images\\train\\"
@@ -16,9 +16,9 @@ if __name__=="__main__":
     txt_folder = "E:\\TranfficSign\\ultralytics-main\\ultralytics\\cfg\\datasets\\labels\\train\\"
     for i in range(0,20):
         fliename = str(i)
-        fliename = "0000"+fliename
-        if len(fliename)>5:
-            fliename = fliename[-5:]
+        fliename = "000000"+fliename
+        if len(fliename)>7:
+            fliename = fliename[-7:]
         # print(fliename)
 
         # 合成文件路径

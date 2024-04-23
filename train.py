@@ -1,8 +1,8 @@
 from ultralytics import YOLO
 
 # 加载模型
-model = YOLO("yolov8n.yaml")  # 从头开始构建新模型
-model = YOLO("E:\\TranfficSign\\ultralytics-main\\yolov8n.pt")  # 加载预训练模型（建议用于训练）
+model = YOLO(r"E:\TranfficSign\ultralytics-main\ultralytics\cfg\models\v8\my_yolov8n.yaml")  # 从头开始构建新模型
+# model = YOLO("E:\\TranfficSign\\ultralytics-main\\yolov8n.pt")  # 加载预训练模型（建议用于训练）
 
 if __name__=="__main__":
     # 训练模型

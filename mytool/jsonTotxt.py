@@ -21,6 +21,7 @@ if __name__=="__main__":
         # 获取图片尺寸
         with Image.open(imgpath + data["imgs"][imgnum]["path"]) as img:
             Xsize, Ysize = img.size
+
         # 以图片名字命名txt文件
         txtname = data["imgs"][imgnum]["id"]
         # print(txtname)
@@ -30,16 +31,29 @@ if __name__=="__main__":
             # 标志类型，这里我只取了第一个字符，需要完整的标志类型名字可以自己修改
             labelimg = obj["category"][0:1]
             # 归一化
+            # 四个点的坐标
+            pointlist = [[obj["bbox"]["xmin"],obj["bbox"]["ymin"]],
+                         [obj["bbox"]["xmin"], obj["bbox"]["ymax"]],
+                         [obj["bbox"]["xmax"], obj["bbox"]["ymin"]],
+                         [obj["bbox"]["xmax"], obj["bbox"]["ymax"]]]
+            # 标志根据类型计算其他的点
+            print(pointlist)
+
+
             witX = (obj["bbox"]["xmax"] - obj["bbox"]["xmin"])
             witY = (obj["bbox"]["ymax"] - obj["bbox"]["ymin"])
+
             cenX = obj["bbox"]["xmin"]+witX/2
             cenY = obj["bbox"]["ymin"]+witY/2
+
             templist.append(labelimg)
+
             templist.append(cenX/Xsize)
             templist.append(cenY/Ysize)
             templist.append(witX/Xsize)
             templist.append(witY/Ysize)
             textcontent.append(templist)
+            break
             # print(templist)
         # print(textcontent)
         # print(data["imgs"][imgnum]["path"].split("/")[0])
@@ -55,3 +69,4 @@ if __name__=="__main__":
         # j += 1
         # if j > 5:
         #     break
+        break
